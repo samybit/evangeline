@@ -26,8 +26,8 @@ To run this project locally on your machine:
 
 1. **Clone the repository:**
 ```bash
-   git clone https://github.com/your-username/flora-and-fable.git
-   cd flora-and-fable
+   git clone https://github.com/samybit/evangeline
+   cd evangeline
 ```
 
 2. **Install dependencies:**
