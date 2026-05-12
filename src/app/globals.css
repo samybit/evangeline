@@ -149,3 +149,38 @@
     cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="%23065f46" stroke="white" stroke-width="1.5"><path d="M14.5,11 V4.5 A2.5,2.5 0 0,0 9.5,4.5 V15.5 L7.5,13.5 A2.5,2.5 0 0,0 4,17 L10.5,24 A5.5,5.5 0 0,0 14.5,26 H19.5 A5.5,5.5 0 0,0 25,20.5 V12.5 A2.5,2.5 0 0,0 20,12.5 V14 A2.5,2.5 0 0,0 15,14 V11 Z" /></svg>') 12 2, pointer !important;
   }
 }
+
+/* =========================================
+   CUSTOM SCROLLBAR (Botanical Theme)
+   ========================================= */
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  /* thumb color, track color (emerald-800, stone-100) */
+  scrollbar-color: #065f46 #f5f5f4;
+}
+
+/* For Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #f5f5f4;
+  /* stone-100 */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #065f46;
+  /* emerald-800 */
+  border-radius: 20px;
+  /* Adding a border with the track color creates an elegant padding effect */
+  border: 2px solid #f5f5f4;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #064e3b;
+  /* emerald-900 */
+}
