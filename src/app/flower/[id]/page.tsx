@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Sparkles, ArrowRight } from "lucide-react";
 import BotanistChat from "@/components/chat/BotanistChat";
+import ImageMagnifier from "@/components/ui/ImageMagnifier";
 
 export default async function FlowerPage({
   params
@@ -23,15 +24,8 @@ export default async function FlowerPage({
 
         {/* Left Side: Sticky Image Column */}
         <div className="w-full lg:w-1/2 lg:h-[calc(100vh-5rem)] lg:sticky top-20">
-          <div className="relative w-full h-[50vh] lg:h-full">
-            <Image
-              src={flower.image}
-              alt={flower.name}
-              fill
-              priority
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
+          <div className="relative w-full h-[50vh] lg:h-full bg-stone-200">
+            <ImageMagnifier src={flower.image} alt={flower.name} />
           </div>
         </div>
 
