@@ -1,76 +1,47 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-
-const HERO_FLOWERS = [
-  {
-    id: "peony",
-    name: "Peony",
-    meaning: "Romance, Prosperity, Good Fortune",
-    image: "https://images.unsplash.com/photo-1563241527-3004b7be0ffd?q=80&w=1000&auto=format&fit=crop", // Placeholder
-  },
-  {
-    id: "blue-lotus",
-    name: "Blue Lotus",
-    meaning: "Spiritual Rebirth, Wisdom, Tranquility",
-    image: "https://images.unsplash.com/photo-1593011311094-1aebf1da5e8d?q=80&w=1000&auto=format&fit=crop", // Placeholder
-  },
-  {
-    id: "spider-lily",
-    name: "Red Spider Lily",
-    meaning: "Final Goodbyes, Reincarnation",
-    image: "https://images.unsplash.com/photo-1508610048659-a06b669e3321?q=80&w=1000&auto=format&fit=crop", // Placeholder
-  }
-];
+import { FLOWERS } from "@/lib/flowers"; // We will create this in Phase 2
 
 export default function Home() {
+  // Grab the first 3 flowers for our hero display
+  const heroFlowers = FLOWERS.slice(0, 3);
+
   return (
-    <div className="min-h-[calc(100vh-5rem)] flex flex-col items-center justify-center p-4 md:p-8">
+    <div className="w-full h-[calc(100vh-5rem)] flex flex-col md:flex-row">
+      {heroFlowers.map((flower) => (
+        <Link
+          href={`/flower/${flower.id}`}
+          key={flower.id}
+          className="group relative flex-1 h-full overflow-hidden cursor-pointer flex flex-col justify-end border-r border-stone-800/20 last:border-0"
+        >
+          {/* Background Image */}
+          <Image
+            src={flower.image}
+            alt={flower.name}
+            fill
+            priority
+            className="object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105"
+            sizes="(max-width: 768px) 100vw, 33vw"
+          />
 
-      <div className="text-center mb-12 max-w-2xl mx-auto">
-        <h1 className="font-serif text-5xl md:text-6xl text-stone-800 mb-6 leading-tight">
-          Every bloom has a <span className="italic text-emerald-800">story.</span>
-        </h1>
-        <p className="text-stone-600 text-lg leading-relaxed">
-          Explore the ancient art of floriography. Discover what your favorite flowers are whispering.
-        </p>
-      </div>
+          {/* Darkening Overlays for dramatic effect and text readability */}
+          <div className="absolute inset-0 bg-stone-950/20 group-hover:bg-transparent transition-colors duration-700" />
+          <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-900/40 to-transparent transition-opacity duration-700" />
 
-      {/* The 3-Column Proud Display */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-7xl h-[70vh] min-h-[600px]">
-        {HERO_FLOWERS.map((flower) => (
-          <Link
-            href={`/flower/${flower.id}`}
-            key={flower.id}
-            className="group relative overflow-hidden rounded-2xl cursor-pointer flex flex-col justify-end"
-          >
-            {/* Background Image */}
-            <Image
-              src={flower.image}
-              alt={flower.name}
-              fill
-              className="object-cover transition-transform duration-700 group-hover:scale-105"
-              sizes="(max-width: 768px) 100vw, 33vw"
-            />
-
-            {/* Gradient Overlay for text readability */}
-            <div className="absolute inset-0 bg-gradient-to-t from-stone-900/90 via-stone-900/30 to-transparent transition-opacity duration-500" />
-
-            {/* Content */}
-            <div className="relative z-10 p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-              <h2 className="font-serif text-3xl text-stone-100 mb-2">{flower.name}</h2>
-              <p className="text-stone-300 text-sm tracking-widest uppercase mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                {flower.meaning}
-              </p>
-              <div className="flex items-center text-emerald-300 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
-                <span className="text-sm font-medium">Read its story</span>
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </div>
+          {/* Content */}
+          <div className="relative z-10 p-10 md:p-14 translate-y-6 group-hover:translate-y-0 transition-transform duration-700 ease-out">
+            <h2 className="font-serif text-4xl md:text-5xl text-stone-100 mb-3">{flower.name}</h2>
+            <p className="text-stone-300 text-sm md:text-base tracking-widest uppercase mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-150">
+              {flower.shortMeaning}
+            </p>
+            <div className="flex items-center text-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-300">
+              <span className="text-sm font-medium tracking-wide uppercase">Read its story</span>
+              <ArrowRight className="w-5 h-5 ml-3" />
             </div>
-          </Link>
-        ))}
-      </div>
-
+          </div>
+        </Link>
+      ))}
     </div>
   );
 }
