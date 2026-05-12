@@ -17,7 +17,7 @@ export default function ImageMagnifier({ src, alt }: ImageMagnifierProps) {
   // Size of the magnifying square
   const MAGNIFIER_SIZE = 250;
   // How much the image is scaled up inside the square
-  const ZOOM_LEVEL = 300;
+  const ZOOM_LEVEL = 500;
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
     // Get the dimensions and position of the image container
