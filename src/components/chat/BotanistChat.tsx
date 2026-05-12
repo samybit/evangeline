@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Sparkles, ArrowRight, Send, User, Flower2 } from "lucide-react";
+import { Sparkles, ArrowRight, Send, Flower2 } from "lucide-react";
 
 interface Message {
   role: "user" | "botanist";
@@ -21,6 +21,19 @@ export default function BotanistChat({ flowerName }: { flowerName: string }) {
   ]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  // 1. Create a reference to the bottom of the chat
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // 2. Function to smoothly scroll to the bottom
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  // 3. Trigger the scroll whenever messages change or loading state toggles
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages, isLoading]);
 
   const SUGGESTIONS = [
     `How do I care for the ${flowerName}?`,
@@ -69,15 +82,18 @@ export default function BotanistChat({ flowerName }: { flowerName: string }) {
       </SheetTrigger>
 
       <SheetContent className="w-full sm:max-w-md border-l-0 bg-stone-50 p-0 flex flex-col h-full">
-        <SheetHeader className="p-6 border-b border-stone-200 bg-white">
-          <SheetTitle className="font-serif text-2xl text-stone-800 flex items-center">
-            <Flower2 className="w-5 h-5 mr-2 text-emerald-700" />
-            The Botanist
-          </SheetTitle>
-        </SheetHeader>
 
-        <ScrollArea className="grow p-6">
-          <div className="flex flex-col space-y-6">
+        <div className="shrink-0">
+          <SheetHeader className="p-6 border-b border-stone-200 bg-white">
+            <SheetTitle className="font-serif text-2xl text-stone-800 flex items-center">
+              <Flower2 className="w-5 h-5 mr-2 text-emerald-700" />
+              The Botanist
+            </SheetTitle>
+          </SheetHeader>
+        </div>
+
+        <ScrollArea className="flex-1 min-h-0 w-full">
+          <div className="flex flex-col space-y-6 p-6">
             {messages.map((msg, i) => (
               <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
                 <div className={`max-w-[85%] rounded-2xl p-4 ${msg.role === "user"
@@ -88,6 +104,7 @@ export default function BotanistChat({ flowerName }: { flowerName: string }) {
                 </div>
               </div>
             ))}
+
             {isLoading && (
               <div className="flex justify-start">
                 <div className="bg-white border border-stone-200 rounded-2xl rounded-tl-sm p-4 shadow-sm flex space-x-1">
@@ -97,10 +114,13 @@ export default function BotanistChat({ flowerName }: { flowerName: string }) {
                 </div>
               </div>
             )}
+
+            {/* 4. This invisible div acts as our anchor to scroll to */}
+            <div ref={messagesEndRef} className="h-1" />
           </div>
         </ScrollArea>
 
-        <div className="p-6 bg-white border-t border-stone-200">
+        <div className="shrink-0 p-6 bg-white border-t border-stone-200">
           <div className="flex flex-wrap gap-2 mb-4">
             {SUGGESTIONS.map((suggestion) => (
               <button
@@ -122,11 +142,12 @@ export default function BotanistChat({ flowerName }: { flowerName: string }) {
               placeholder="Ask a question..."
               className="bg-stone-50 border-stone-200 focus-visible:ring-emerald-700"
             />
-            <Button type="submit" size="icon" disabled={isLoading} className="bg-emerald-800 hover:bg-emerald-900 text-white">
+            <Button type="submit" size="icon" disabled={isLoading || !input.trim()} className="bg-emerald-800 hover:bg-emerald-900 text-white shrink-0">
               <Send className="w-4 h-4" />
             </Button>
           </form>
         </div>
+
       </SheetContent>
     </Sheet>
   );

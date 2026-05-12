@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { FLOWERS } from "@/lib/flowers"; // We will create this in Phase 2
+import { FLOWERS } from "@/lib/flowers";
 
 export default function Home() {
   // Grab the first 3 flowers for our hero display
