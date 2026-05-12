@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Sparkles, ArrowRight } from "lucide-react";
+import BotanistChat from "@/components/chat/BotanistChat";
 
 export default async function FlowerPage({
   params
@@ -61,17 +62,9 @@ export default async function FlowerPage({
             </div>
           </div>
 
-          {/* AI Chat Trigger Placeholder (To be connected in Phase 3) */}
+          {/* AI Chat Trigger Placeholder */}
           <div className="mt-16 pt-8 border-t border-stone-200">
-            <button className="w-full group flex items-center justify-between bg-stone-900 hover:bg-emerald-900 text-stone-50 p-6 rounded-xl transition-all duration-300 shadow-sm hover:shadow-md">
-              <div className="flex flex-col text-left">
-                <span className="font-serif text-xl mb-1 flex items-center">
-                  Ask the Botanist <Sparkles className="w-4 h-4 ml-2 text-emerald-400" />
-                </span>
-                <span className="text-sm text-stone-400 group-hover:text-stone-300">Discover care tips, pairing suggestions, or more lore.</span>
-              </div>
-              <ArrowRight className="w-6 h-6 text-emerald-400 group-hover:translate-x-1 transition-transform" />
-            </button>
+            <BotanistChat flowerName={flower.name} />
           </div>
 
         </div>
