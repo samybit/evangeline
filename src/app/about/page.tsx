@@ -1,11 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { BookOpen, Leaf, Sparkles } from "lucide-react";
 
 export default function AboutPage() {
-  const fadeUpVariant = {
+  const fadeUpVariant: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
   };
@@ -21,7 +21,7 @@ export default function AboutPage() {
           priority
           className="object-cover opacity-40 mix-blend-multiply"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-stone-50/10 via-stone-50/50 to-stone-50" />
+        <div className="absolute inset-0 bg-linear-to-b from-stone-50/10 via-stone-50/50 to-stone-50" />
 
         <motion.div
           initial="hidden"
