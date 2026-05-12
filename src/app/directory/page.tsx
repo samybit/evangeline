@@ -9,8 +9,14 @@ export default function DirectoryPage() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {FLOWERS.map((flower) => (
           <Link href={`/flower/${flower.id}`} key={flower.id} className="group block">
-            <div className="relative aspect-4/5 overflow-hidden rounded-xl mb-4">
-              <Image src={flower.image} alt={flower.name} fill className="object-cover transition-transform group-hover:scale-105" />
+            <div className="relative aspect-4/5 overflow-hidden rounded-xl mb-4 bg-stone-200">
+              <Image
+                src={flower.image}
+                alt={flower.name}
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              />
             </div>
             <h2 className="font-serif text-2xl text-stone-800">{flower.name}</h2>
             <p className="text-stone-500 italic text-sm">{flower.scientificName}</p>

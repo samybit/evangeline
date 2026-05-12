@@ -15,7 +15,7 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden">
         <Image
-          src="https://images.unsplash.com/photo-14684623350315286799?q=80&w=2000&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1507608616759-54f48f0af0ee?q=80&w=2000&auto=format&fit=crop"
           alt="Vintage botanical illustration feel"
           fill
           priority
@@ -109,7 +109,7 @@ export default function AboutPage() {
           className="relative h-[400px] rounded-3xl overflow-hidden flex items-center justify-center"
         >
           <Image
-            src="https://images.unsplash.com/photo-15424178235051463746?q=80&w=2000&auto=format&fit=crop"
+            src="https://images.unsplash.com/photo-1463320726281-696a485928c7?q=80&w=2000&auto=format&fit=crop"
             alt="Botanical Garden"
             fill
             className="object-cover"
