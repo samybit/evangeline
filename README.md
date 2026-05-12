@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Flora & Fable
 
-## Getting Started
+A unique botanical digital experience and showcase focusing on the language of flowers (floriography). This project moves away from standard personal portfolios or e-commerce sites to present a modern, highly interactive gallery.
 
-First, run the development server:
+## 🌿 Key Features
 
+- **"Proud" 3-Column Showcase:** An elegant, edge-to-edge masonry/hero layout displaying flowers on the home page.
+- **Botanical Database & Dynamic Routing:** A custom data structure mapping to individual detail pages for each flower.
+- **"Ask the Botanist" AI Chat:** An integrated slide-out drawer/modal with suggestion chips, allowing users to ask questions about specific flowers via a custom API route.
+- **Fluid Animations & Polish:** Built using Framer Motion to include page transitions, a custom animated cursor, and other responsive visual tweaks.
+- **Global Theming:** Custom botanical-themed scrollbars and a beautifully integrated navigation and footer system.
+
+## 🛠️ Tech Stack
+
+This project was built using best practices and a bleeding-edge modern web stack:
+
+- **Framework:** React & Next.js v16.2.6 (using the App Router and React Server Components)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS v4.3.0
+- **UI Components:** Shadcn UI v4.7.0
+- **Animation:** Framer Motion
+
+## 🚀 Getting Started (Local Development)
+
+To run this project locally on your machine:
+
+1. **Clone the repository:**
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+   git clone https://github.com/your-username/flora-and-fable.git
+   cd flora-and-fable
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Install dependencies:**
+```bash
+   npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. **Start the development server:**
+```bash
+   npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
 
-## Learn More
+> **Note:** The AI chat utilizes a mocked API route for initial development. To use a real LLM, inject your API keys into `src/app/api/botanist/route.ts`.
 
-To learn more about Next.js, take a look at the following resources:
+## 🌐 Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This project is configured for seamless deployment on Netlify via GitHub integration.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Because the project is linked to GitHub, any future code changes pushed to the `main` branch will automatically trigger a rebuild and update the live website.
 
-## Deploy on Vercel
+**Netlify Build Settings:**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Setting | Value |
+|---|---|
+| Base directory | *(leave blank)* |
+| Build command | `npm run build` |
+| Publish directory | `.next` |
