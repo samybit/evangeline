@@ -76,7 +76,7 @@ export default function BotanistChat({ flowerName }: { flowerName: string }) {
           </SheetTitle>
         </SheetHeader>
 
-        <ScrollArea className="flex-grow p-6">
+        <ScrollArea className="grow p-6">
           <div className="flex flex-col space-y-6">
             {messages.map((msg, i) => (
               <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>

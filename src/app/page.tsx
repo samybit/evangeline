@@ -27,7 +27,7 @@ export default function Home() {
 
           {/* Darkening Overlays for dramatic effect and text readability */}
           <div className="absolute inset-0 bg-stone-950/20 group-hover:bg-transparent transition-colors duration-700" />
-          <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-900/40 to-transparent transition-opacity duration-700" />
+          <div className="absolute inset-0 bg-linear-to-t from-stone-950 via-stone-900/40 to-transparent transition-opacity duration-700" />
 
           {/* Content */}
           <div className="relative z-10 p-10 md:p-14 translate-y-6 group-hover:translate-y-0 transition-transform duration-700 ease-out">
